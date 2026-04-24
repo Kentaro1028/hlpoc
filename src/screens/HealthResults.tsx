@@ -34,6 +34,12 @@ const healthData = [
     { name: 'LDLコレステロール', unit: 'mg/dL', value: '133', prev: '133', abnormal: true },
     { name: '中性脂肪（TG）', unit: 'mg/dL', value: '122', prev: '122', abnormal: false },
   ]},
+  { category: '尿酸', items: [
+    { name: '尿酸（UA）', unit: 'mg/dL', value: '–', prev: '–', abnormal: false },
+  ]},
+  { category: '腎機能', items: [
+    { name: 'クレアチニン（Cr）', unit: 'mg/dL', value: '122', prev: '122', abnormal: false },
+  ]},
   { category: '糖代謝', items: [
     { name: '血糖値（FPG）', unit: 'mg/dL', value: '105', prev: '105', abnormal: false },
     { name: 'HbA1c（NGSP）', unit: '%', value: '5.2', prev: '5.2', abnormal: false },

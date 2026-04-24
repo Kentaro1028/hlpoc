@@ -2,11 +2,13 @@ import StatusBar from '../components/StatusBar';
 import NavBar from '../components/NavBar';
 import BottomNav from '../components/BottomNav';
 
+const CHOCOZAP_URL = 'https://lp.chocozap.jp/main-07/d/';
+
 const options = [
-  { label: 'chocoZAPに通う', osusume: true },
-  { label: '歩数の目標を設定する', osusume: false },
-  { label: 'ミッション宣言をする', osusume: false },
-  { label: 'AIコーチの提案を読む', osusume: false },
+  { label: 'chocoZAPに通う', osusume: true, url: CHOCOZAP_URL },
+  { label: '歩数の目標を設定する', osusume: false, url: null },
+  { label: 'ミッション宣言をする', osusume: false, url: null },
+  { label: 'AIコーチの提案を読む', osusume: false, url: null },
 ];
 
 interface Props {
@@ -39,15 +41,18 @@ export default function ExerciseMethods({ onBack, onSelectDiet }: Props) {
                   {opt.osusume && (
                     <span className="badge-osusume">おすすめ</span>
                   )}
-                  <button className="btn-option">
+                  <button
+                    className="btn-option"
+                    onClick={() => opt.url && window.open(opt.url, '_blank', 'noopener,noreferrer')}
+                  >
                     {opt.label}
-                    {opt.label === 'chocoZAPに通う' && (
+                    {opt.url && (
                       <span style={{
                         position: 'absolute', right: 12, top: '50%', transform: 'translateY(-50%)',
                         background: '#FF6600', color: 'white', fontSize: 10, fontWeight: 700,
                         padding: '2px 6px', borderRadius: 4,
                       }}>
-                        chocoZAP
+                        外部サイト ↗
                       </span>
                     )}
                   </button>
