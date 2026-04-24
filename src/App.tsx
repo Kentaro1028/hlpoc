@@ -16,7 +16,7 @@ interface HistoryEntry {
 export default function App() {
   const [history, setHistory] = useState<HistoryEntry[]>([{ screen: 'health-results' }]);
   const [animClass, setAnimClass] = useState('');
-  const [answers, setAnswers] = useState<Record<string, string | number>>({});
+  const [, setAnswers] = useState<Record<string, string | number>>({});
   const [userType, setUserType] = useState<'exercise' | 'diet'>('exercise');
   const animating = useRef(false);
 
@@ -45,7 +45,6 @@ export default function App() {
 
   const handleQuestionnaireNext = (ans: Record<string, string | number>) => {
     setAnswers(ans);
-    // 趣向判定: T1=好き かつ T2=高い → 運動型、それ以外 → 食事型
     const type = (ans['t1'] === '好き' && ans['t2'] === '高い') ? 'exercise' : 'diet';
     setUserType(type);
     navigate('future-sim');
