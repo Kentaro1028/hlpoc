@@ -23,15 +23,10 @@
 body {
   background: #E8E8E8;
   min-height: 100vh;
-  font-family: -apple-system, BlinkMacSystemFont, 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', sans-serif;
-}
-
-/* モバイルモック用ラッパー（CRMモード時は使われない） */
-.mobile-mock-root {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 100vh;
+  font-family: -apple-system, BlinkMacSystemFont, 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', sans-serif;
 }
 
 #root {

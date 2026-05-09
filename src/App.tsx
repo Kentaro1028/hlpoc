@@ -5,7 +5,6 @@ import Questionnaire from './screens/Questionnaire';
 import FutureSimulation from './screens/FutureSimulation';
 import ExerciseMethods from './screens/ExerciseMethods';
 import DietMethods from './screens/DietMethods';
-import CRMRouter from './crm/CRMRouter';
 import type { ScreenId } from './types';
 
 type Direction = 'forward' | 'back';
@@ -15,11 +14,6 @@ interface HistoryEntry {
 }
 
 export default function App() {
-  // CRMモード（URLハッシュで切替）
-  if (window.location.hash === '#crm') {
-    return <CRMRouter />;
-  }
-
   const [history, setHistory] = useState<HistoryEntry[]>([{ screen: 'health-results' }]);
   const [animClass, setAnimClass] = useState('');
   const [, setAnswers] = useState<Record<string, string | number>>({});
@@ -59,7 +53,6 @@ export default function App() {
   const key = `${current}-${history.length}`;
 
   return (
-    <div className="mobile-mock-root">
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 24, padding: '24px 0' }}>
       {/* 画面タイトル（フレーム外） */}
       <div style={{
@@ -126,7 +119,6 @@ export default function App() {
           </>
         )}
       </div>
-    </div>
     </div>
   );
 }
