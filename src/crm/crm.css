@@ -1,0 +1,409 @@
+/* ===== CRM共通スタイル ===== */
+.crm-root {
+  min-height: 100vh;
+  background: #f5f6f8;
+  font-family: -apple-system, BlinkMacSystemFont, 'Hiragino Sans', 'Yu Gothic', sans-serif;
+  font-size: 13px;
+  color: #222;
+}
+
+/* ---- グローバルナビ ---- */
+.crm-gnav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 44px;
+  padding: 0 20px;
+  background: #1b2438;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 500;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.crm-gnav__left {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+.crm-gnav__item {
+  cursor: pointer;
+  opacity: 0.85;
+  transition: opacity 0.15s;
+}
+.crm-gnav__item:hover { opacity: 1; }
+.crm-gnav__item.active {
+  opacity: 1;
+  font-weight: 700;
+  border-bottom: 2px solid #fff;
+  padding-bottom: 2px;
+}
+.crm-gnav__right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  font-size: 12px;
+}
+.crm-gnav__user {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.crm-gnav__user-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #4caf50;
+}
+.crm-gnav__logout {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+  opacity: 0.8;
+}
+.crm-gnav__logout:hover { opacity: 1; }
+
+/* ---- ケースサブヘッダ ---- */
+.crm-case-header {
+  background: #fff;
+  border-bottom: 1px solid #e2e4e8;
+  padding: 10px 20px 0;
+}
+.crm-case-header__row1 {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-bottom: 10px;
+}
+.crm-case-header__brand {
+  font-size: 11px;
+  font-weight: 700;
+  color: #1b2438;
+  background: #e9edf5;
+  padding: 2px 7px;
+  border-radius: 3px;
+}
+.crm-case-header__case-no {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 13px;
+  color: #333;
+}
+.crm-case-header__case-no svg {
+  color: #888;
+}
+.crm-case-header__member-id {
+  font-size: 12px;
+  color: #666;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.crm-case-header__name {
+  font-size: 16px;
+  font-weight: 700;
+  color: #111;
+  margin-left: 4px;
+}
+
+/* ---- タブ ---- */
+.crm-tabs {
+  display: flex;
+  gap: 0;
+}
+.crm-tab {
+  padding: 8px 16px;
+  font-size: 13px;
+  color: #555;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: color 0.15s;
+}
+.crm-tab:hover { color: #1b2438; }
+.crm-tab.active {
+  color: #1b2438;
+  font-weight: 600;
+  border-bottom-color: #1b2438;
+}
+.crm-tab__icon {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #e0e0e0;
+  display: inline-block;
+}
+.crm-tab__icon--line { background: #06C755; }
+
+/* ---- サブタブバー ---- */
+.crm-subtabs {
+  background: #fff;
+  border-bottom: 1px solid #e2e4e8;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  gap: 4px;
+}
+.crm-subtab {
+  padding: 8px 12px;
+  font-size: 12px;
+  color: #444;
+  cursor: pointer;
+  border: 1px solid #e2e4e8;
+  border-radius: 4px 4px 0 0;
+  background: #f8f8f8;
+  margin-top: 6px;
+  transition: background 0.15s;
+}
+.crm-subtab:hover { background: #eef0f5; }
+.crm-subtab.active {
+  background: #fff;
+  border-bottom-color: #fff;
+  color: #1b2438;
+  font-weight: 600;
+}
+.crm-subtab--new {
+  background: none;
+  border: 1px dashed #bbb;
+  color: #666;
+}
+.crm-subtabs__right {
+  margin-left: auto;
+  font-size: 12px;
+  color: #1b2438;
+  cursor: pointer;
+  padding: 6px 0;
+}
+.crm-subtabs__right:hover { text-decoration: underline; }
+
+/* ---- コンテンツエリア ---- */
+.crm-content {
+  padding: 24px 20px;
+  min-height: calc(100vh - 130px);
+}
+
+/* ---- 事案一覧 ---- */
+.crm-top__toolbar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+.crm-top__search {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: #fff;
+  border: 1px solid #d8dae0;
+  border-radius: 4px;
+  padding: 6px 12px;
+  font-size: 12px;
+  min-width: 220px;
+}
+.crm-top__search input {
+  border: none;
+  outline: none;
+  font-size: 12px;
+  width: 100%;
+  background: transparent;
+}
+.crm-top__filter-btn {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 14px;
+  border: 1px solid #d8dae0;
+  border-radius: 4px;
+  background: #fff;
+  font-size: 12px;
+  color: #444;
+  cursor: pointer;
+}
+.crm-top__filter-btn:hover { background: #f0f2f7; }
+.crm-top__count {
+  margin-left: auto;
+  font-size: 12px;
+  color: #777;
+}
+
+/* ---- テーブル ---- */
+.crm-table-wrap {
+  background: #fff;
+  border: 1px solid #e2e4e8;
+  border-radius: 6px;
+  overflow: hidden;
+}
+.crm-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+}
+.crm-table thead tr {
+  background: #f5f6f8;
+  border-bottom: 1px solid #e2e4e8;
+}
+.crm-table th {
+  padding: 10px 12px;
+  text-align: left;
+  font-weight: 600;
+  color: #555;
+  white-space: nowrap;
+}
+.crm-table tbody tr {
+  border-bottom: 1px solid #f0f2f5;
+  cursor: pointer;
+  transition: background 0.12s;
+}
+.crm-table tbody tr:last-child { border-bottom: none; }
+.crm-table tbody tr:hover { background: #f8f9fd; }
+.crm-table td {
+  padding: 10px 12px;
+  color: #333;
+  vertical-align: middle;
+}
+.crm-table__name { font-weight: 600; }
+.crm-table__case-no { color: #1b2438; font-weight: 600; }
+.crm-table__brand {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 700;
+  background: #e9edf5;
+  color: #1b2438;
+  padding: 1px 5px;
+  border-radius: 2px;
+  margin-right: 4px;
+}
+
+/* ---- ステータスバッジ ---- */
+.crm-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.crm-badge--waiting {
+  background: #fff3e0;
+  color: #e65100;
+}
+.crm-badge--sms {
+  background: #e8f5e9;
+  color: #2e7d32;
+}
+.crm-badge--open {
+  background: #e3f2fd;
+  color: #1565c0;
+}
+.crm-badge--closed {
+  background: #f5f5f5;
+  color: #757575;
+}
+.crm-badge__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+}
+.crm-badge--waiting .crm-badge__dot { background: #e65100; }
+.crm-badge--sms .crm-badge__dot { background: #2e7d32; }
+.crm-badge--open .crm-badge__dot { background: #1565c0; }
+.crm-badge--closed .crm-badge__dot { background: #bdbdbd; }
+
+/* ---- LINE未認証状態 ---- */
+.crm-unverified-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 280px;
+  gap: 28px;
+}
+.crm-unverified-notice {
+  font-size: 13px;
+  color: #777;
+}
+.crm-unverified-info {
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+}
+.crm-unverified-info__block {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  align-items: flex-start;
+}
+.crm-unverified-info__label {
+  font-size: 11px;
+  color: #999;
+}
+.crm-unverified-info__value {
+  font-size: 20px;
+  font-weight: 700;
+  color: #1b2438;
+}
+.crm-unverified-info__sub {
+  font-size: 11px;
+  color: #aaa;
+}
+.crm-unverified-info__pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  background: #e8f5e9;
+  color: #2e7d32;
+  padding: 3px 10px;
+  border-radius: 10px;
+  font-weight: 600;
+}
+.crm-unverified-info__pill-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #2e7d32;
+}
+.crm-unverified-info__edit {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #888;
+  font-size: 13px;
+  padding: 0 2px;
+}
+.crm-unverified-info__person {
+  font-size: 13px;
+  color: #222;
+  font-weight: 600;
+}
+.crm-unverified-actions {
+  display: flex;
+  gap: 12px;
+}
+.crm-btn {
+  padding: 8px 20px;
+  border-radius: 4px;
+  font-size: 13px;
+  cursor: pointer;
+  font-weight: 500;
+  border: 1px solid transparent;
+  transition: opacity 0.15s;
+}
+.crm-btn:hover { opacity: 0.85; }
+.crm-btn--secondary {
+  background: #fff;
+  border-color: #ccc;
+  color: #444;
+}
+.crm-btn--primary {
+  background: #1b2438;
+  color: #fff;
+}
