@@ -760,3 +760,55 @@ body {
   transition: background 0.15s;
 }
 .btn-outline:active { background: var(--red-bg); }
+
+/* ── 罹患リスク詳細バーチャート ── */
+.risk-section-header {
+  background: #666666;
+  color: var(--white);
+  font-size: 13px;
+  font-weight: 700;
+  text-align: center;
+  padding: 7px 16px;
+}
+
+.risk-bar-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 16px;
+  border-bottom: 1px solid #f0f0f0;
+}
+.risk-bar-label {
+  font-size: 13px;
+  width: 90px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  color: var(--text);
+}
+.risk-bar-info {
+  font-size: 10px;
+  color: var(--gray);
+  flex-shrink: 0;
+}
+.risk-bar-track {
+  flex: 1;
+  height: 20px;
+  background: #f0f0f0;
+  border-radius: 4px;
+  overflow: hidden;
+}
+.risk-bar-fill {
+  height: 100%;
+  background: var(--red);
+  border-radius: 4px;
+}
+.risk-bar-pct {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+  width: 38px;
+  text-align: right;
+  flex-shrink: 0;
+}

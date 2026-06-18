@@ -5,6 +5,7 @@ import Questionnaire from './screens/Questionnaire';
 import FutureSimulation from './screens/FutureSimulation';
 import ExerciseMethods from './screens/ExerciseMethods';
 import DietMethods from './screens/DietMethods';
+import RiskDetail from './screens/RiskDetail';
 import type { ScreenId } from './types';
 
 type Direction = 'forward' | 'back';
@@ -65,12 +66,16 @@ export default function App() {
         {current === 'future-sim' && '新規：A-2 未来シミュレーション画面'}
         {current === 'exercise-methods' && '新規：A-3-1 選べる健康方法（運動）'}
         {current === 'diet-methods' && '新規：A-3-2 選べる食事方法'}
+        {current === 'risk-detail' && '新規：詳細一覧（罹患リスク）'}
       </div>
 
       <PhoneFrame>
         <div key={key} className={animClass || ''} style={{ display: 'contents' }}>
           {current === 'health-results' && (
-            <HealthResults onNext={() => navigate('questionnaire')} />
+            <HealthResults
+              onNext={() => navigate('questionnaire')}
+              onRiskDetail={() => navigate('risk-detail')}
+            />
           )}
           {current === 'questionnaire' && (
             <Questionnaire
@@ -96,6 +101,12 @@ export default function App() {
             <DietMethods
               onBack={goBack}
               onSelectExercise={() => navigate('exercise-methods')}
+            />
+          )}
+          {current === 'risk-detail' && (
+            <RiskDetail
+              onBack={goBack}
+              onMission={() => navigate('questionnaire')}
             />
           )}
         </div>

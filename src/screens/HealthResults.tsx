@@ -53,9 +53,10 @@ const healthData = [
 
 interface Props {
   onNext: () => void;
+  onRiskDetail: () => void;
 }
 
-export default function HealthResults({ onNext }: Props) {
+export default function HealthResults({ onNext, onRiskDetail }: Props) {
   const [activeTab, setActiveTab] = useState<'data' | 'risk'>('data');
 
   return (
@@ -162,7 +163,7 @@ export default function HealthResults({ onNext }: Props) {
                 <div className="risk-stat-card__sub">
                   平均年間医療費（3割負担）110,030円
                 </div>
-                <div className="risk-stat-card__more" onClick={onNext}>
+                <div className="risk-stat-card__more" onClick={onRiskDetail}>
                   もっと詳しく &gt;
                 </div>
               </div>

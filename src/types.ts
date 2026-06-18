@@ -3,7 +3,8 @@ export type ScreenId =
   | 'questionnaire'
   | 'future-sim'
   | 'exercise-methods'
-  | 'diet-methods';
+  | 'diet-methods'
+  | 'risk-detail';
 
 export interface AppState {
   answers: Record<string, string | number>;
