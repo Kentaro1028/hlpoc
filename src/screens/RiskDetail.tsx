@@ -54,7 +54,7 @@ export default function RiskDetail({ onBack, onMission }: Props) {
         <div className="tab-item active" style={{ flex: 1 }}>罹患リスク</div>
         <div className="tab-item" style={{ flex: 1 }}>年間医療費</div>
         <div className="tab-item" style={{ flex: 1, fontSize: 11, lineHeight: 1.3, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-          検査値異常<br />リスク
+          介護リスク
         </div>
       </div>
 
