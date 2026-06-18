@@ -61,7 +61,7 @@ export default function HealthResults({ onNext }: Props) {
   return (
     <>
       <StatusBar />
-      <NavBar title="健診結果" />
+      <NavBar title={activeTab === 'risk' ? 'リスク/医療費予測' : '健診結果'} />
 
       <div className="tab-bar-top">
         <div
@@ -144,14 +144,79 @@ export default function HealthResults({ onNext }: Props) {
             </div>
           </>
         ) : (
-          <div style={{ padding: '0 16px', paddingTop: 8 }}>
-            <p style={{ fontSize: 13, color: 'var(--text-secondary)', textAlign: 'center', marginBottom: 16 }}>
-              リスク/医療費予測タブの内容はA-2画面へ
-            </p>
-            <button className="btn-primary-rect" onClick={onNext}>
-              未来シミュレーションを見る
-            </button>
-          </div>
+          <>
+            <div className="risk-date">2024年11月1日 受診結果</div>
+
+            <div className="section">
+              {/* 5年以内の予測罹患リスク（赤） */}
+              <div className="risk-stat-card red">
+                <div className="risk-stat-card__title">5年以内の予測罹患リスク</div>
+                <div className="risk-stat-card__pill">
+                  脂質異常症
+                  <span className="risk-stat-card__pill-arrow">›</span>
+                </div>
+                <div className="risk-stat-card__percent">
+                  <span className="risk-stat-card__num">45</span>
+                  <span className="risk-stat-card__pct">%</span>
+                </div>
+                <div className="risk-stat-card__sub">
+                  平均年間医療費（3割負担）110,030円
+                </div>
+                <div className="risk-stat-card__more" onClick={onNext}>
+                  もっと詳しく &gt;
+                </div>
+              </div>
+
+              {/* 老後の介護リスク（青） */}
+              <div className="risk-stat-card blue">
+                <div className="risk-stat-card__title">老後の介護リスク</div>
+                <div className="risk-stat-card__pill">認知症</div>
+                <div className="risk-stat-card__percent">
+                  <span className="risk-stat-card__num">52</span>
+                  <span className="risk-stat-card__pct">%</span>
+                </div>
+                <div className="risk-stat-card__sub">
+                  将来介護が必要になる可能性があります。
+                </div>
+                <div className="risk-stat-card__more">
+                  もっと詳しく &gt;
+                </div>
+              </div>
+            </div>
+
+            {/* あなたにおすすめ */}
+            <div className="reco-heading">あなたにおすすめ</div>
+            <div className="section">
+              <div className="reco-card">
+                <div className="reco-card__top">
+                  <div className="reco-card__text">
+                    健康リスクに合わせた<br />
+                    かんたんな運動から始めましょう
+                  </div>
+                  <div className="reco-card__illust">🏃</div>
+                </div>
+                <button className="btn-primary-rect" onClick={onNext}>
+                  健康ミッションを始める
+                </button>
+              </div>
+
+              <div className="reco-card">
+                <div className="reco-card__top">
+                  <div className="reco-card__text">
+                    家族の介護が気になる方へ<br />
+                    お気軽にご相談ください
+                  </div>
+                  <div className="reco-card__logo">
+                    <span className="reco-card__logo-mark" />
+                    ウェルビオ
+                  </div>
+                </div>
+                <button className="btn-outline">詳しく見る</button>
+              </div>
+            </div>
+
+            <div className="spacer" />
+          </>
         )}
       </div>
 

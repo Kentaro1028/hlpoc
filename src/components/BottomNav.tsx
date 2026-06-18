@@ -1,8 +1,8 @@
 const items = [
-  { icon: '🏠', label: 'ホーム' },
-  { icon: '❤️', label: '健康チェック', active: true },
+  { icon: '🏠', label: 'ホーム', active: true },
+  { icon: '📋', label: '健診結果の登録' },
   { icon: '📖', label: '健康記事' },
-  { icon: '📋', label: '契約手続き' },
+  { icon: '🛡', label: '契約手続き' },
 ];
 
 export default function BottomNav() {

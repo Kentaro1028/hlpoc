@@ -18,6 +18,7 @@
   --white: #FFFFFF;
   --orange: #FF9900;
   --green: #4CAF50;
+  --blue: #2E7BD6;
 }
 
 body {
@@ -632,3 +633,130 @@ body {
   border-radius: 4px;
   margin-left: auto;
 }
+
+/* ── リスク/医療費予測タブ ── */
+.risk-date {
+  text-align: center;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text);
+  padding: 4px 16px 12px;
+}
+
+.risk-stat-card {
+  border-radius: 16px;
+  padding: 18px 16px 14px;
+  color: var(--white);
+  text-align: center;
+  margin-bottom: 14px;
+}
+.risk-stat-card.red { background: var(--red); }
+.risk-stat-card.blue { background: var(--blue); }
+
+.risk-stat-card__title {
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+.risk-stat-card__pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.22);
+  color: var(--white);
+  font-size: 14px;
+  font-weight: 700;
+  padding: 5px 16px;
+  border-radius: 16px;
+}
+.risk-stat-card__pill-arrow {
+  font-size: 13px;
+  opacity: 0.9;
+}
+.risk-stat-card__percent {
+  margin: 8px 0 6px;
+  line-height: 1;
+}
+.risk-stat-card__num {
+  font-size: 44px;
+  font-weight: 800;
+}
+.risk-stat-card__pct {
+  font-size: 20px;
+  font-weight: 700;
+  margin-left: 2px;
+}
+.risk-stat-card__sub {
+  font-size: 13px;
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+.risk-stat-card__more {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.92);
+  cursor: pointer;
+}
+
+.reco-heading {
+  text-align: center;
+  font-size: 15px;
+  font-weight: 700;
+  padding: 6px 16px 14px;
+}
+
+.reco-card {
+  background: var(--white);
+  border: 1px solid var(--gray-mid);
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 14px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+}
+.reco-card__top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+.reco-card__text {
+  font-size: 14px;
+  line-height: 1.6;
+  font-weight: 600;
+  color: var(--text);
+}
+.reco-card__illust {
+  font-size: 34px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+.reco-card__logo {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--blue);
+  white-space: nowrap;
+}
+.reco-card__logo-mark {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: conic-gradient(#2E7BD6, #4CAF50, #FF9900, #E8383D, #2E7BD6);
+}
+
+.btn-outline {
+  width: 100%;
+  padding: 13px;
+  background: var(--white);
+  color: var(--red);
+  border: 1.5px solid var(--red);
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.btn-outline:active { background: var(--red-bg); }
