@@ -1,6 +1,9 @@
 import StatusBar from '../components/StatusBar';
 import NavBar from '../components/NavBar';
 import BottomNav from '../components/BottomNav';
+import { logEvent } from '../lib/logger';
+
+const KALORIRU_URL = 'https://www.kalorilu.jp/';
 
 const options = [
   { label: 'カロミルをダウンロードする', osusume: true, isKaloriru: true },
@@ -37,7 +40,14 @@ export default function DietMethods({ onBack, onSelectExercise }: Props) {
                   {opt.osusume && (
                     <span className="badge-osusume">おすすめ</span>
                   )}
-                  <button className="btn-option">
+                  <button
+                    className="btn-option"
+                    onClick={async () => {
+                      if (!opt.isKaloriru) return;
+                      await logEvent('referral_click', 'diet-methods', 'カロミル', { url: KALORIRU_URL });
+                      window.open(KALORIRU_URL, '_blank', 'noopener,noreferrer');
+                    }}
+                  >
                     {opt.label}
                     {opt.isKaloriru && (
                       <span className="kaloriru-badge">カロミル</span>

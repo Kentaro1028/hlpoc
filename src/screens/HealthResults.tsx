@@ -2,6 +2,7 @@ import { useState } from 'react';
 import StatusBar from '../components/StatusBar';
 import NavBar from '../components/NavBar';
 import BottomNav from '../components/BottomNav';
+import { logEvent } from '../lib/logger';
 
 const healthData = [
   { category: '体格', items: [
@@ -139,7 +140,13 @@ export default function HealthResults({ onNext, onRiskDetail }: Props) {
             </div>
             <div className="spacer" />
             <div className="section">
-              <button className="btn-primary" onClick={onNext}>
+              <button
+                className="btn-primary"
+                onClick={() => {
+                  logEvent('health_check_submit', 'health-results');
+                  onNext();
+                }}
+              >
                 新しい健診結果を登録する
               </button>
             </div>

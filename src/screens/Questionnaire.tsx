@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import StatusBar from '../components/StatusBar';
 import NavBar from '../components/NavBar';
+import { logEvent } from '../lib/logger';
 
 type QType = 'yesno' | 'choice' | 'numPicker';
 
@@ -121,7 +122,11 @@ export default function Questionnaire({ onBack, onNext }: Props) {
           <button
             className="btn-primary"
             style={{ opacity: allAnswered ? 1 : 0.5 }}
-            onClick={() => allAnswered && onNext(answers)}
+            onClick={() => {
+              if (!allAnswered) return;
+              logEvent('survey_submit', 'questionnaire', undefined, { answerCount: Object.keys(answers).length });
+              onNext(answers);
+            }}
           >
             結果を見る →
           </button>

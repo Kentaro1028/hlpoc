@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import StatusBar from '../components/StatusBar';
 import NavBar from '../components/NavBar';
 import BottomNav from '../components/BottomNav';
+import { logEvent } from '../lib/logger';
 
 const riskData = [
   { rank: 1, name: '脂質異常症', before: '45%', after: '35%' },
@@ -25,6 +26,11 @@ interface Props {
 export default function FutureSimulation({ onBack, userType, onSelectExercise, onSelectDiet }: Props) {
   const [burden, setBurden] = useState<string>('3割');
   const [showModal, setShowModal] = useState(false);
+
+  // 画面表示時にview_ai_resultを記録
+  useEffect(() => {
+    logEvent('view_ai_result', 'future-sim', undefined, { userType });
+  }, []);
 
   const isExercise = userType === 'exercise';
 

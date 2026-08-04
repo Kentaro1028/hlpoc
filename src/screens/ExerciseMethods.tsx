@@ -1,6 +1,7 @@
 import StatusBar from '../components/StatusBar';
 import NavBar from '../components/NavBar';
 import BottomNav from '../components/BottomNav';
+import { logEvent } from '../lib/logger';
 
 const CHOCOZAP_URL = 'https://lp.chocozap.jp/main-07/d/';
 
@@ -43,7 +44,11 @@ export default function ExerciseMethods({ onBack, onSelectDiet }: Props) {
                   )}
                   <button
                     className="btn-option"
-                    onClick={() => opt.url && window.open(opt.url, '_blank', 'noopener,noreferrer')}
+                    onClick={async () => {
+                      if (!opt.url) return;
+                      await logEvent('referral_click', 'exercise-methods', opt.label, { url: opt.url });
+                      window.open(opt.url, '_blank', 'noopener,noreferrer');
+                    }}
                   >
                     {opt.label}
                     {opt.url && (
