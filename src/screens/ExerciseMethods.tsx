@@ -1,7 +1,9 @@
+import { useEffect } from 'react';
 import StatusBar from '../components/StatusBar';
 import NavBar from '../components/NavBar';
 import BottomNav from '../components/BottomNav';
 import { logEvent } from '../lib/logger';
+import { trackEvent } from '../lib/ga4';
 
 const CHOCOZAP_URL = 'https://lp.chocozap.jp/main-07/d/';
 
@@ -18,6 +20,9 @@ interface Props {
 }
 
 export default function ExerciseMethods({ onBack, onSelectDiet }: Props) {
+  useEffect(() => {
+    trackEvent('view_referral', { screen_name: 'exercise-methods' });
+  }, []);
   return (
     <>
       <StatusBar />

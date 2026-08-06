@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import PhoneFrame from './components/PhoneFrame';
 import HealthResults from './screens/HealthResults';
 import Questionnaire from './screens/Questionnaire';
@@ -6,6 +6,7 @@ import FutureSimulation from './screens/FutureSimulation';
 import ExerciseMethods from './screens/ExerciseMethods';
 import DietMethods from './screens/DietMethods';
 import RiskDetail from './screens/RiskDetail';
+import { trackPageView } from './lib/ga4';
 import type { ScreenId } from './types';
 
 type Direction = 'forward' | 'back';
@@ -13,6 +14,15 @@ type Direction = 'forward' | 'back';
 interface HistoryEntry {
   screen: ScreenId;
 }
+
+const SCREEN_TITLES: Record<ScreenId, string> = {
+  'health-results':    '健診結果',
+  'questionnaire':     '生活習慣アンケート',
+  'future-sim':        '未来シミュレーション',
+  'exercise-methods':  '選べる運動方法',
+  'diet-methods':      '選べる食事方法',
+  'risk-detail':       '詳細一覧（罹患リスク）',
+};
 
 export default function App() {
   const [history, setHistory] = useState<HistoryEntry[]>([{ screen: 'health-results' }]);
@@ -22,6 +32,11 @@ export default function App() {
   const animating = useRef(false);
 
   const current = history[history.length - 1].screen;
+
+  // 画面が変わるたびに GA4 page_view を送信
+  useEffect(() => {
+    trackPageView(current, SCREEN_TITLES[current]);
+  }, [current]);
 
   const navigate = (screen: ScreenId, dir: Direction = 'forward') => {
     if (animating.current) return;

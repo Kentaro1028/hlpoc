@@ -3,6 +3,7 @@ import StatusBar from '../components/StatusBar';
 import NavBar from '../components/NavBar';
 import BottomNav from '../components/BottomNav';
 import { logEvent } from '../lib/logger';
+import { trackEvent } from '../lib/ga4';
 
 const healthData = [
   { category: '体格', items: [
@@ -72,7 +73,10 @@ export default function HealthResults({ onNext, onRiskDetail }: Props) {
         >健診データ</div>
         <div
           className={`tab-item${activeTab === 'risk' ? ' active' : ''}`}
-          onClick={() => setActiveTab('risk')}
+          onClick={() => {
+            setActiveTab('risk');
+            if (activeTab !== 'risk') trackEvent('view_risk_tab');
+          }}
         >リスク/医療費予測</div>
       </div>
 

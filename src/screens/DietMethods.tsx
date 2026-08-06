@@ -1,7 +1,9 @@
+import { useEffect } from 'react';
 import StatusBar from '../components/StatusBar';
 import NavBar from '../components/NavBar';
 import BottomNav from '../components/BottomNav';
 import { logEvent } from '../lib/logger';
+import { trackEvent } from '../lib/ga4';
 
 const KALORIRU_URL = 'https://www.kalorilu.jp/';
 
@@ -17,6 +19,9 @@ interface Props {
 }
 
 export default function DietMethods({ onBack, onSelectExercise }: Props) {
+  useEffect(() => {
+    trackEvent('view_referral', { screen_name: 'diet-methods' });
+  }, []);
   return (
     <>
       <StatusBar />

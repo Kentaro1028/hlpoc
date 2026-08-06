@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import StatusBar from '../components/StatusBar';
 import NavBar from '../components/NavBar';
 import { logEvent } from '../lib/logger';
+import { trackEvent } from '../lib/ga4';
 
 type QType = 'yesno' | 'choice' | 'numPicker';
 
@@ -40,6 +41,11 @@ interface Props {
 
 export default function Questionnaire({ onBack, onNext }: Props) {
   const [answers, setAnswers] = useState<Record<string, string | number>>({});
+
+  // アンケート画面表示時にファネル開始イベントを送信
+  useEffect(() => {
+    trackEvent('begin_questionnaire');
+  }, []);
 
   const setAnswer = (id: string, val: string | number) => {
     setAnswers(prev => ({ ...prev, [id]: val }));
