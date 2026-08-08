@@ -25,7 +25,7 @@ export default function DietMethods({ onBack, onSelectExercise }: Props) {
   return (
     <>
       <StatusBar />
-      <NavBar title="未来シミュレーション" onBack={onBack} />
+      <NavBar title="未来シミュレーション" onBack={onBack} screenName="diet-methods" />
 
       <div className="scroll-content">
         <div className="spacer" />

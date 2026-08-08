@@ -57,7 +57,7 @@ export default function Questionnaire({ onBack, onNext }: Props) {
   return (
     <>
       <StatusBar />
-      <NavBar title="生活習慣に関するアンケート" onBack={onBack} />
+      <NavBar title="生活習慣に関するアンケート" onBack={onBack} screenName="questionnaire" />
 
       <div className="scroll-content">
         <div className="ai-bubble-wrap">

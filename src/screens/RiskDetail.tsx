@@ -47,7 +47,7 @@ export default function RiskDetail({ onBack, onMission }: Props) {
   return (
     <>
       <StatusBar />
-      <NavBar title="詳細一覧" onBack={onBack} />
+      <NavBar title="詳細一覧" onBack={onBack} screenName="risk-detail" />
 
       {/* 3タブ */}
       <div className="tab-bar-top" style={{ margin: '12px 16px', display: 'flex' }}>

@@ -3,6 +3,7 @@ import StatusBar from '../components/StatusBar';
 import NavBar from '../components/NavBar';
 import BottomNav from '../components/BottomNav';
 import { logEvent } from '../lib/logger';
+import { trackEvent } from '../lib/ga4';
 
 const riskData = [
   { rank: 1, name: '脂質異常症', before: '45%', after: '35%' },
@@ -37,7 +38,7 @@ export default function FutureSimulation({ onBack, userType, onSelectExercise, o
   return (
     <>
       <StatusBar />
-      <NavBar title="健診結果" onBack={onBack} />
+      <NavBar title="健診結果" onBack={onBack} screenName="future-sim" />
 
       <div className="tab-bar-top">
         <div className="tab-item" onClick={onBack}>健診データ</div>
@@ -72,19 +73,31 @@ export default function FutureSimulation({ onBack, userType, onSelectExercise, o
 
               {isExercise ? (
                 <>
-                  <button className="btn-primary-rect" onClick={onSelectExercise}>
+                  <button className="btn-primary-rect" onClick={() => {
+                    trackEvent('select_type', { type: 'exercise', entry: 'main_button' });
+                    onSelectExercise();
+                  }}>
                     〇 運動が有効なタイプ →
                   </button>
                   <div className="spacer-sm" />
-                  <div className="text-link" onClick={onSelectDiet}>食事方法も見てみる</div>
+                  <div className="text-link" onClick={() => {
+                    trackEvent('select_type', { type: 'diet', entry: 'sub_link' });
+                    onSelectDiet();
+                  }}>食事方法も見てみる</div>
                 </>
               ) : (
                 <>
-                  <button className="btn-primary-rect" onClick={onSelectDiet}>
+                  <button className="btn-primary-rect" onClick={() => {
+                    trackEvent('select_type', { type: 'diet', entry: 'main_button' });
+                    onSelectDiet();
+                  }}>
                     〇 食事が有効なタイプ →
                   </button>
                   <div className="spacer-sm" />
-                  <div className="text-link" onClick={onSelectExercise}>運動方法も見てみる</div>
+                  <div className="text-link" onClick={() => {
+                    trackEvent('select_type', { type: 'exercise', entry: 'sub_link' });
+                    onSelectExercise();
+                  }}>運動方法も見てみる</div>
                 </>
               )}
             </div>
